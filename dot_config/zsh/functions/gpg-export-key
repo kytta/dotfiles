@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ -z "$1" ]; then
+  1>&2 echo 'No key ID provided'
+  return 1
+fi
+
+gpg --armor --export "$1" > "$1".pub.asc
+gpg --armor --export-secret-keys "$1" > "$1".sec.asc
+gpg --armor --export-secret-subkeys "$1" > "$1".ssb.asc

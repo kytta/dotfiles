@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ -z "$1" ]; then
+  prefix=kytta
+else
+  prefix=$1
+fi
+tempdir="$(mktemp -d "${TMPDIR}""${prefix}"-XXXXXX)" || exit 1
+cd "$tempdir" || exit 1

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if [ -z "$1" ]; then
+  1>&2 echo 'No name provided'
+  return 1
+fi
+
+if [ "$1" = "tubs" ]; then
+  sudo cat ~/.config/openconnect/tubs.passwd | sudo openconnect \
+    -u y0100973 \
+    --authgroup=Tunnel-TU-Traffic \
+    --passwd-on-stdin \
+    vpngate.tu-bs.de
+fi

@@ -1,0 +1,19 @@
+#!/bin/sh
+
+echo "Removing stopped containers..."
+docker container prune
+
+echo
+echo "Removing unused volumes..."
+docker volume prune
+
+echo
+echo "Removing unused images..."
+docker image prune --all
+
+echo
+echo "Removing unused networks..."
+docker network prune --all
+
+echo
+echo "Done."

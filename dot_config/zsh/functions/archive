@@ -1,0 +1,4 @@
+#!/bin/sh
+
+filename=$(basename "$1")
+tar --create --xz --options='compression-level=9' --file "$filename.tar.xz" "$1"

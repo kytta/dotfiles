@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+# An anonymous function; enables us to use scoped variables in our dotfiles.
+() {
+  # Define `local` variables
+
+  local file=
+  for file in $ZDOTDIR/rc.d/<->-*.zsh(n); do
+    . $file
+  done
+} "$@"
