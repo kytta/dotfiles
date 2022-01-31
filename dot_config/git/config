@@ -1,0 +1,33 @@
+[user]
+	email = me@kytta.dev
+	name = Nikita Karamov
+	signingkey = 3C8E688C96EEB9C9
+[core]
+	editor = 'nano' --guidestripe=72 --breaklonglines --fill=72
+	excludesfile = ~/.config/git/global_gitignore
+[merge]
+	tool = vscode
+[mergetool "vscode"]
+	cmd = code --wait $MERGED
+[diff]
+	tool = vscode
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+[gpg]
+	program = /usr/local/bin/gpg
+[color]
+	ui = true
+[commit]
+	template = ~/.config/git/commit_template.txt
+	gpgSign = true
+[tag]
+	forceSignAnnotated = true
+[pull]
+	rebase = true
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
