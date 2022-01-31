@@ -5,3 +5,8 @@
   stripComponents: 1
   url: https://github.com/romkatv/powerlevel10k/archive/refs/heads/master.tar.gz
 
+.config/zsh/rc.d/69-iterm.zsh:
+  type: file
+  exact: true
+  refreshPeriod: 168h
+  url: https://iterm2.com/shell_integration/zsh
