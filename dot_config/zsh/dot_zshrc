@@ -7,7 +7,6 @@ fi
 # Anonymous function to scope variables in dotfiles
 () {
   # `define local variables
-  local gitdir=~/Git  # Where to keep repos and plugins
 
   # Load all of the files in rc.d that start with <number>- and end in .zsh
   local file=
