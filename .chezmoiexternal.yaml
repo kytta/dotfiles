@@ -9,3 +9,9 @@
   exact: true
   refreshPeriod: 168h
   url: https://iterm2.com/shell_integration/zsh
+
+.local/share/nano-syntax-highlighting:
+  type: archive
+  refreshPeriod: 672h  # 4 weeks
+  stripComponents: 1
+  url: https://github.com/scopatz/nanorc/archive/refs/heads/master.tar.gz
