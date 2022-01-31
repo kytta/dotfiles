@@ -1,3 +1,4 @@
 #!/bin/sh
+# Print a gitignore file based on a template from <gitignore.io>
 
-curl -sLw "\n" "https://www.toptal.com/developers/gitignore/api/$@"
+curl -sLw "\n" "https://www.toptal.com/developers/gitignore/api/$(echo "$@" | sed 's/ /,/g')"

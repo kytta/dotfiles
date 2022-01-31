@@ -1,0 +1,4 @@
+#!/bin/sh
+# Creates a directory and cd's into it
+
+[ -n "$1" ] && mkdir -p "$1" && builtin cd "$1" || return 1

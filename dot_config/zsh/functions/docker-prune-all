@@ -1,4 +1,6 @@
 #!/bin/sh
+# Prunes stopped containers, unused volumes, images, and networks in Docker.
+# MAY RESULT IN A MASSIVE DATA LOSS!
 
 echo "Removing stopped containers..."
 docker container prune

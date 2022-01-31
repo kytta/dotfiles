@@ -1,4 +1,5 @@
 #!/bin/sh
+# Exports text versions of the public and private keys and subkeys from GPG.
 
 if [ -z "$1" ]; then
   1>&2 echo 'No key ID provided'

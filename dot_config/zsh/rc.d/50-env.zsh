@@ -1,9 +1,3 @@
-#!/usr/env/bin zsh
-
-#
-# Defines environment variables
-#
-
 # -U ensures each entry in these is Unique
 export -U PATH path FPATH fpath MANPATH manpath
 export -UT INFOPATH infopath  # -T creates a "tied" pair
@@ -32,11 +26,15 @@ if command -v brew > /dev/null; then
 fi
 
 # Set the Android SDK path
-export ANDROID_HOME="$XDG_DATA_HOME/Android/sdk"
+export ANDROID_HOME="${XDG_DATA_HOME:=~/.local/share}/Android/sdk"
 
 # Set PATH and completions for the Google Cloud SDK.
-if [ -f '$HOME/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/google-cloud-sdk/path.zsh.inc'; fi
-if [ -f '$HOME/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '$HOME/google-cloud-sdk/path.zsh.inc' ]; then
+  . '$HOME/google-cloud-sdk/path.zsh.inc'
+fi
+if [ -f '$HOME/google-cloud-sdk/completion.zsh.inc' ]; then
+  . '$HOME/google-cloud-sdk/completion.zsh.inc'
+fi
 
 
 # Editors
@@ -46,6 +44,7 @@ export PAGER=less
 export LESS='--ignore-case --LONG-PROMPT --RAW-CONTROL-CHARS --chop-long-lines --hilite-unread --tabs=4'
 
 # macOS stuff
+# todo: replace with chezmoi templates
 if [[ "$OSTYPE" == darwin* ]]; then
   # set browser to `open`
   export BROWSER=open
@@ -53,3 +52,6 @@ if [[ "$OSTYPE" == darwin* ]]; then
   # fix python multiprocessing
   export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES 
 fi
+
+# Use `< file` to quickly view the contents of any file.
+READNULLCMD=$PAGER  # Set the program to use for this.

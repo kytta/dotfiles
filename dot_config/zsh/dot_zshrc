@@ -1,9 +1,11 @@
 #!/usr/bin/env zsh
 
-# An anonymous function; enables us to use scoped variables in our dotfiles.
+# Anonymous function to scope variables in dotfiles
 () {
-  # Define `local` variables
+  # `define local variables
+  local gitdir=~/Git  # Where to keep repos and plugins
 
+  # Load all of the files in rc.d that start with <number>- and end in .zsh
   local file=
   for file in $ZDOTDIR/rc.d/<->-*.zsh(n); do
     . $file

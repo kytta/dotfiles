@@ -1,0 +1,20 @@
+#!/usr/bin/env zsh
+# Functions and widgets
+
+# Smart URLs
+# Adds brackets if pasted URLs contain non-Zsh-friendly symbols
+if [[ ${TERM} != "dumb" ]]; then
+  autoload -Uz bracketed-paste-url-magic
+  zle -N bracketed-paste bracketed-paste-url-magic
+fi
+
+# load functions
+autoload -Uz \
+  archive \
+  cdtmp \
+  docker-prune-all \
+  gi \
+  gpg-export-key \
+  mkdcd \
+  vpn \
+  wttr

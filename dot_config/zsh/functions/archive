@@ -1,4 +1,5 @@
 #!/bin/sh
+# Compresses directories as .tar.xz with maximum compression level
 
 filename=$(basename "$1")
 tar --create --xz --options='compression-level=9' --file "$filename.tar.xz" "$1"

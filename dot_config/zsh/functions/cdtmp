@@ -1,7 +1,9 @@
 #!/bin/sh
+# Create a temporary directory using mktemp and cd into it.
+# Optionally accept a custom prefix
 
 if [ -z "$1" ]; then
-  prefix=kytta
+  prefix=tempdir
 else
   prefix=$1
 fi

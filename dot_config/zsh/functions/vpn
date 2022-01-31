@@ -1,4 +1,5 @@
 #!/bin/sh
+# Establishes a VPN connection to various servers I use.
 
 if [ -z "$1" ]; then
   1>&2 echo 'No name provided'
