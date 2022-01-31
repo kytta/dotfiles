@@ -38,29 +38,29 @@ alias lx='ll --sort=extension' # sorted by extension
 # tree
 alias tree='ls --tree'
 
-# macOS Everywhere
-# todo: chezmoi templates
-if [[ "$OSTYPE" == darwin* ]]; then
-  alias o='open'
-elif [[ "$OSTYPE" == cygwin* ]]; then
+{{ if (eq .chezmoi.os "darwin") }}
+alias o='open'
+{{ else if (eq .chezmoi.os "windows" ) }}
+if [[ "$OSTYPE" == cygwin* ]]; then
   alias o='cygstart'
   alias pbcopy='tee > /dev/clipboard'
   alias pbpaste='cat /dev/clipboard'
-elif [[ "$OSTYPE" == linux-android ]]; then
-  alias o='termux-open'
-  alias pbcopy='termux-clipboard-set'
-  alias pbpaste='termux-clipboard-get'
-else
-  alias o='xdg-open'
-
-  if (( $+commands[xclip] )); then
-    alias pbcopy='xclip -selection clipboard -in'
-    alias pbpaste='xclip -selection clipboard -out'
-  elif (( $+commands[xsel] )); then
-    alias pbcopy='xsel --clipboard --input'
-    alias pbpaste='xsel --clipboard --output'
-  fi
 fi
+{{ else if (eq .chezmoi.os "android" ) }}
+alias o='termux-open'
+alias pbcopy='termux-clipboard-set'
+alias pbpaste='termux-clipboard-get'
+{{ else }}
+alias o='xdg-open'
+
+if (( $+commands[xclip] )); then
+  alias pbcopy='xclip -selection clipboard -in'
+  alias pbpaste='xclip -selection clipboard -out'
+elif (( $+commands[xsel] )); then
+  alias pbcopy='xsel --clipboard --input'
+  alias pbpaste='xsel --clipboard --output'
+fi
+{{ end }}
 
 alias code=codium
 alias lg=lazygit

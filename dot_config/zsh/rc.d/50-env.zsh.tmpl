@@ -44,14 +44,13 @@ export PAGER=less
 export LESS='--ignore-case --LONG-PROMPT --RAW-CONTROL-CHARS --chop-long-lines --hilite-unread --tabs=4'
 
 # macOS stuff
-# todo: replace with chezmoi templates
-if [[ "$OSTYPE" == darwin* ]]; then
+{{ if (eq .chezmoi.os "darwin") }}
   # set browser to `open`
   export BROWSER=open
 
   # fix python multiprocessing
   export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES 
-fi
+{{ end }}
 
 # Use `< file` to quickly view the contents of any file.
 READNULLCMD=$PAGER  # Set the program to use for this.
