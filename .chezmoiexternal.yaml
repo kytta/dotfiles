@@ -1,0 +1,7 @@
+.local/share/powerlevel10k:
+  type: archive
+  exact: true
+  refreshPeriod: 168h
+  stripComponents: 1
+  url: https://github.com/romkatv/powerlevel10k/archive/refs/heads/master.tar.gz
+
