@@ -1,7 +1,4 @@
 #!/usr/bin/env zsh
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
 
 . ${XDG_DATA_HOME:=~/.local/share}/powerlevel10k/powerlevel10k.zsh-theme
 
