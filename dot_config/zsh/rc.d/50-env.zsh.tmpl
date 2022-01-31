@@ -8,6 +8,12 @@ path=(
   /usr/local/opt/ncurses/bin
 
   $path
+
+{{ if (eq .chezmoi.os "darwin") }}
+  /Library/Apple/usr/bin
+  /opt/X11/bin
+{{ end }}
+
   ~/.local/bin
   $HOME/.cargo/bin
   # /usr/local/opt/node@16/bin
