@@ -7,3 +7,4 @@ setopt AUTO_CD
 hash -d z=$ZDOTDIR
 hash -d d=$HOME/dev
 hash -d dl=$HOME/Downloads
+hash -d chezmoi="$(chezmoi source-path)"
