@@ -16,5 +16,4 @@ autoload -Uz \
   gi \
   gpg-export-key \
   mkdcd \
-  vpn \
   wttr
