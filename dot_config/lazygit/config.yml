@@ -1,2 +1,28 @@
 gui:
   language: en
+customCommands:
+  - key: <c-r>
+    command: subl .
+    context: status
+    loadingText: Opening...
+    description: open current project in Sublime Text
+  - key: <c-p>
+    command: git remote prune {{.SelectedRemote.Name}}
+    context: remotes
+    loadingText: Pruning...
+    description: prune deleted remote branches
+  - key: <c-c>
+    command: git commit -m "{{index .PromptResponses 0}}" --author="{{index .PromptResponses 1}} <{{index .PromptResponses 2}}>"
+    context: files
+    prompts:
+      - type: input
+        title: Message
+        initialValue: ''
+      - type: input
+        title: Author Name
+        initialValue: ''
+      - type: input
+        title: Author Email
+        initialValue: ''
+    loadingText: Committing...
+    description: commit as non-default author
