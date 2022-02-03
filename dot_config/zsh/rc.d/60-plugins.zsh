@@ -1,3 +1,3 @@
 # pyenv
 
-$(pyenv init -)"
+eval "$(pyenv init -)"
