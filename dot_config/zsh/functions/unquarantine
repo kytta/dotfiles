@@ -1,0 +1,12 @@
+#!/bin/sh
+# Removes a file from quarantine. If no argument supplied, removes quarantine
+# from every app in /Applications
+
+if [ -z "$1" ]; then
+  # unquarantine all apps
+  for _app in /Applications/*.app; do
+    sudo xattr -d com.apple.quarantine "$_app"
+  done
+else
+  sudo xattr -d com.apple.quarantine "$1"
+fi

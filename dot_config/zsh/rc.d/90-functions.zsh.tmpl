@@ -17,3 +17,7 @@ autoload -Uz \
   gpg-export-key \
   mkdcd \
   wttr
+
+{{ if (eq .chezmoi.os "darwin") }}
+autoload -Uz unquarantine
+{{ end }}
