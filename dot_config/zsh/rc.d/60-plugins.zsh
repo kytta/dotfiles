@@ -151,6 +151,14 @@ bindkey '^[[B' history-substring-search-down
 
 
 #
+# zsh-autosuggestions
+#
+
+source ${XDG_DATA_HOME}/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+
+
+#
 # pyenv
 #
 
