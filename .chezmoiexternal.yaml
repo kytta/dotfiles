@@ -10,6 +10,12 @@
   refreshPeriod: 168h
   url: https://iterm2.com/shell_integration/zsh
 
+.local/share/zsh-completions:
+  type: archive
+  refreshPeriod: 168h
+  stripComponents: 1
+  url: https://github.com/zsh-users/zsh-completions/archive/refs/heads/master.tar.gz
+
 .local/share/nano-syntax-highlighting:
   type: archive
   refreshPeriod: 672h  # 4 weeks
