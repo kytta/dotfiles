@@ -144,6 +144,17 @@ source ${XDG_DATA_HOME}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
 #
+# zsh-history-substring-search
+#
+
+source ${XDG_DATA_HOME}/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+
+
+#
 # pyenv
 #
 
