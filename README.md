@@ -1,4 +1,4 @@
-# kytta/dotfiles
+# [kytta/dotfiles](https://codeberg.org/kytta/dotfiles)
 
 Collection of configuration files.
 
