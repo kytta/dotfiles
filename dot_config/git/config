@@ -4,7 +4,7 @@
 	signingkey = 3C8E688C96EEB9C9
 [core]
 	editor = 'nano' --guidestripe=72 --breaklonglines --fill=72
-	excludesfile = ~/.config/git/global_gitignore
+	excludesFqile = ~/.config/git/ignore
 [merge]
 	tool = vscode
 [mergetool "vscode"]
