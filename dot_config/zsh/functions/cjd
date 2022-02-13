@@ -1,4 +1,4 @@
 #!/bin/sh
 
-cd "$HOME/Documents/$1*" || return
+cd "$HOME"/Documents/*/*/"$1"* || return
 
