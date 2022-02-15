@@ -163,3 +163,11 @@ source ${XDG_DATA_HOME}/zsh-autosuggestions/zsh-autosuggestions.zsh
 #
 
 eval "$(pyenv init -)"
+
+
+
+#
+# nodenv
+#
+
+eval "$(nodenv init -)"
