@@ -1,3 +1,6 @@
 README.md
 LICENSE
 htoprc
+{{ if ne .chezmoi.os "darwin" }}
+dot_config/private_karabiner/
+{{ end }}
