@@ -13,6 +13,8 @@
 	tool = vscode
 [difftool "vscode"]
 	cmd = code --wait --diff $LOCAL $REMOTE
+[difftool "difftastic"]
+	cmd = difft $LOCAL $REMOTE
 [gpg]
 	program = /usr/local/bin/gpg
 [color]
