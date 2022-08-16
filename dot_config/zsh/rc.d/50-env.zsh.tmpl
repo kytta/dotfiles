@@ -2,6 +2,8 @@
 export -U PATH path FPATH fpath MANPATH manpath
 export -UT INFOPATH infopath  # -T creates a "tied" pair
 
+export PNPM_HOME="$HOME/.local/share/pnpm"
+
 path=(
   /usr/local/opt/gnu-getopt/bin
   /usr/local/opt/mysql-client/bin
@@ -16,7 +18,7 @@ path=(
 
   ~/.local/bin
   $HOME/.cargo/bin
-  # /usr/local/opt/node@16/bin
+  $PNPM_HOME
 )
 
 fpath=(
