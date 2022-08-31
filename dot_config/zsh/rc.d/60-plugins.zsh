@@ -20,7 +20,7 @@ unsetopt FLOW_CONTROL       # Disable start/stop characters in shell editor.
 # Load and initialize the completion system ignoring insecure directories with a
 # cache time of 20 hours, so it should almost always regenerate the first time a
 # shell is opened each day.
-autoload -Uz compinit
+autoload -Uz compinit bashcompinit
 _comp_path="${XDG_CACHE_HOME}/zsh/zcompdump"
 # #q expands globs in conditional expressions
 if [[ $_comp_path(#qNmh-20) ]]; then
@@ -29,10 +29,12 @@ if [[ $_comp_path(#qNmh-20) ]]; then
 else
   mkdir -p "$_comp_path:h"
   compinit -i -d "$_comp_path"
+
   # Keep $_comp_path younger than cache time even if it isn't regenerated.
   touch "$_comp_path"
 fi
 unset _comp_path
+bashcompinit
 
 # Defaults.
 # zstyle ':completion:*:default' list-prompt '%S%M matches%s'
@@ -161,7 +163,8 @@ source ${XDG_DATA_HOME}/zsh-autosuggestions/zsh-autosuggestions.zsh
 #
 # pyenv
 #
-
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 
@@ -171,3 +174,10 @@ eval "$(pyenv init -)"
 #
 
 eval "$(nodenv init -)"
+
+
+#
+# pipx
+#
+
+eval "$(register-python-argcomplete pipx)"
