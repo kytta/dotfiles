@@ -2,3 +2,16 @@ encryption: gpg
 
 gpg:
   recipient: me@kytta.dev
+
+data:
+  xdg:
+    bin: ".local/bin"
+    config: ".config"
+    data: ".local/share"
+    state: ".local/state"
+
+    {{ if eq .chezmoi.os "darwin" }}
+    cache: "Library/Caches"
+    {{ else }}
+    cache: ".cache"
+    {{ end }}
