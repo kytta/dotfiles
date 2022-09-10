@@ -4,7 +4,7 @@
 	signingkey = ~/.ssh/id_ed25519
 [core]
 	editor = 'nano' --guidestripe=72 --breaklonglines --fill=72
-	excludesFqile = ~/.config/git/ignore
+	excludesFile = ~/.config/git/ignore
 [merge]
 	tool = vscode
 [mergetool "vscode"]
