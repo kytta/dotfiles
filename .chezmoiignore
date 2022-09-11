@@ -1,7 +1,10 @@
 README.md
 LICENSE
 htoprc
+
 {{ if ne .chezmoi.os "darwin" }}
 dot_config/private_karabiner/
+
 run_once_defaults-write.sh
+run_once_before_install-homebrew.sh
 {{ end }}
