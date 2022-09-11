@@ -22,7 +22,7 @@ fi
 #
 # Homebrew
 #
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$({{- .homebrew.prefix -}}/bin/brew shellenv)"
 fpath+=( "$HOMEBREW_PREFIX"/share/zsh/site-functions )
 
 export HOMEBREW_BAT=1

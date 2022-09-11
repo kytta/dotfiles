@@ -3,7 +3,17 @@ encryption: gpg
 gpg:
   recipient: me@kytta.dev
 
+
+
 data:
+  {{ if eq .chezmoi.os "darwin" }}
+  homebrew:
+    {{ if eq .chezmoi.arch "arm64" }}
+    prefix: "/opt/homebrew"
+    {{ else }}
+    prefix: "/usr/local"
+    {{ end }}
+  {{ end }}
   xdg:
     bin: ".local/bin"
     config: ".config"
