@@ -3,4 +3,5 @@ LICENSE
 htoprc
 {{ if ne .chezmoi.os "darwin" }}
 dot_config/private_karabiner/
+run_once_defaults-write.sh
 {{ end }}
