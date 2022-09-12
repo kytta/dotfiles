@@ -3,6 +3,8 @@ LICENSE
 .chezmoisymlinks
 
 {{ if ne .chezmoi.os "darwin" }}
+private_Library/
+
 dot_config/private_karabiner/
 
 run_once_defaults-write.sh
