@@ -1,0 +1,35 @@
+{
+	"title": "Open Raycast with the Spotlight button",
+	"rules": [
+		{
+			"description": "Remap F4 (Spotlight) button to Ctrl-Space",
+			"manipulators": [
+				{
+					"from": {
+						"key_code": "f4"
+					},
+					"to": [
+						{
+							"key_code": "spacebar",
+							"modifiers": [
+								"left_control"
+							]
+						}
+					],
+					"type": "basic",
+					"conditions": [
+						{
+							"type": "device_if",
+							"identifiers": [
+								{
+									"vendor_id": 1452,
+									"product_id": 834
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
