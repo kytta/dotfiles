@@ -21,19 +21,22 @@ alias rm="${aliases[rm]:-rm} -i"
 
 # ls
 alias sl='ls'                  # Correction for common spelling error.
-alias ls="${aliases[ls]:-exa}" # TODO: check if exa installed
 
-alias l='ls --oneline --all'   # one column, + hidden files.
-alias ll='ls --long --header'  # long format
-alias lr='ll --recurse'        # human readable sizes, recursively.
-alias la='ll --all'            # long format, + hidden files.
-alias lm='la | "$PAGER"'       # long format, + hidden files, through pager.
-alias lk='ll --sort=size'      # sorted by size (largest last)
-alias lt='ll --sort=modified'  # sorted by date (most recent last)
-alias lc='lt --changed'        # sorted by date (most recent last) + ctime.
-alias lu='lt --accessed'       # sorted by date (most recent last) + atime.
-alias lg='la --git'            # long format, + hidden files, + Git status
-alias lx='ll --sort=extension' # sorted by extension
+if (( $+commands[exa] )); then
+  alias ls="${aliases[ls]:-exa}"
+
+  alias l='ls --oneline --all'   # one column, + hidden files.
+  alias ll='ls --long --header'  # long format
+  alias lr='ll --recurse'        # human readable sizes, recursively.
+  alias la='ll --all'            # long format, + hidden files.
+  alias lm='la | "$PAGER"'       # long format, + hidden files, through pager.
+  alias lk='ll --sort=size'      # sorted by size (largest last)
+  alias lt='ll --sort=modified'  # sorted by date (most recent last)
+  alias lc='lt --changed'        # sorted by date (most recent last) + ctime.
+  alias lu='lt --accessed'       # sorted by date (most recent last) + atime.
+  alias lg='la --git'            # long format, + hidden files, + Git status
+  alias lx='ll --sort=extension' # sorted by extension
+fi
 
 # tree
 alias tree='ls --tree'
