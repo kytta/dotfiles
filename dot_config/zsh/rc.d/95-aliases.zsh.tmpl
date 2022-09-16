@@ -87,6 +87,6 @@ alias vpn-tubs='sudo openconnect -u y0100973 --authgroup=Tunnel-TU-Traffic --pas
 alias b='buku --suggest'
 
 
-alias sshk='kitty +kitten ssh'
+[[ "$TERM" == "xterm-kitty" ]] && alias ssh='kitty +kitten ssh'
 
 (( $+commands[shred] )) && alias obliterate=shred --remove
