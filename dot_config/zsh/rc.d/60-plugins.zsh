@@ -139,7 +139,11 @@ zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<-
 
 source ${XDG_DATA_HOME}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main pattern)
 
+# typeset -A ZSH_HIGHLIGHT_PATTERNS
+ZSH_HIGHLIGHT_PATTERNS+=('rm -rf*' 'fg=white,bold,bg=red')
+ZSH_HIGHLIGHT_PATTERNS+=('obliterate *' 'fg=white,bold,bg=red')
 
 #
 # zsh-history-substring-search
