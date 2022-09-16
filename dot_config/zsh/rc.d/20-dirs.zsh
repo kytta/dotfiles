@@ -7,5 +7,5 @@ setopt AUTO_CD
 hash -d z=$ZDOTDIR
 hash -d c=$HOME/Code
 hash -d dl=$HOME/Downloads
-hash -d chezmoi="$(chezmoi source-path)"
+(( $+commands[chezmoi] )) && hash -d chezmoi="$(chezmoi source-path)"
 hash -d ssh=$HOME/.ssh
