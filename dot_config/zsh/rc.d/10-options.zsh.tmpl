@@ -78,21 +78,29 @@ setopt NOTIFY
 #
 
 # Where to store history
-HISTFILE=${XDG_DATA_HOME}/zsh/history
-
-# Create history directory if it doesn't exist
-# TODO: use chezmoi scripts
-[[ -d $HISTFILE:h ]] || mkdir -p $HISTFILE:h
+HISTFILE=${XDG_DATA_HOME:=$HOME/{{ .xdg.data }}}/zsh/history
 
 # Max number of entries to keep in history file and in memory
-SAVEHIST=$(( 100 * 1000 ))      # one hundred thousand
+SAVEHIST=$(( 100000 ))          # one hundred thousand lines
 HISTSIZE=$(( 1.2 * SAVEHIST ))  # Zsh recommended value
 
 # Write the history file in the ':start:elapsed;command' format.
 setopt EXTENDED_HISTORY
 
+# Beep when accessing non-existent history.
+setopt HIST_BEEP
+
+# Expire a duplicate event first when trimming history.
+setopt HIST_EXPIRE_DUPS_FIRST
+
 # Use modern file-locking mechanisms, for better safety & performance.
 setopt HIST_FCNTL_LOCK
+
+# Do not display a previously found event.
+setopt HIST_FIND_NO_DUPS
+
+# Do not record an event that was just recorded again.
+setopt HIST_IGNORE_DUPS
 
 # Keep only the most recent copy of each duplicate entry in history.
 setopt HIST_IGNORE_ALL_DUPS
