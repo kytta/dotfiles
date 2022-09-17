@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+# Where to store history
+HISTFILE="$HOME/{{ .xdg.data }}/zsh/history"
+
+# Create history directory if it doesn't exist
+[[ -d $HISTFILE:h ]] || mkdir -p $HISTFILE:h
