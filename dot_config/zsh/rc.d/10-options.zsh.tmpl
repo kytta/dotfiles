@@ -19,9 +19,8 @@ setopt INTERACTIVE_COMMENTS
 # Don't print a warning message if a mail file has been accessed.
 unsetopt MAIL_WARNING
 
-# Don't let > overwrite files. To overwrite, use >| instead.
-setopt NO_CLOBBER
-
+# Don't let > and >> overwrite files. To overwrite, append | or !
+unsetopt CLOBBER
 
 
 #
