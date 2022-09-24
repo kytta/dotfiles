@@ -1,5 +1,5 @@
-#!/usr/bin/env zsh
-# Executes commands at login post-zshrc.
+#!/bin/zsh
+# Executes commands at login post-zshrc. It should not change the shell environment.
 
 {
   # Compile the completion dump to increase startup speed.
