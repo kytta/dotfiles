@@ -5,10 +5,10 @@ export -UT INFOPATH infopath  # -T creates a "tied" pair
 export PNPM_HOME="$HOME/.local/share/pnpm"
 
 path=(
-  /usr/local/opt/curl/bin
-  /usr/local/opt/gnu-getopt/bin
-  /usr/local/opt/mysql-client/bin
-  /usr/local/opt/ncurses/bin
+  "$HOMEBREW_PREFIX"/opt/curl/bin
+  "$HOMEBREW_PREFIX"/opt/gnu-getopt/bin
+  "$HOMEBREW_PREFIX"/opt/mysql-client/bin
+  "$HOMEBREW_PREFIX"/opt/ncurses/bin
 
   $path
 
