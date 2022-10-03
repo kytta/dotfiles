@@ -1,0 +1,76 @@
+{
+	"title": "Caps Lock by @kytta",
+	"rules": [
+		{
+			"description": "Caps → Hyper (US keyboard if pressed alone), Shift+Caps → RU keyboard",
+			"manipulators": [
+				{
+					"type": "basic",
+					"from": {
+						"key_code": "caps_lock",
+						"modifiers": {
+							"mandatory": ["shift"]
+						}
+					},
+					"to": [
+						{
+							"select_input_source": {
+								"input_source_id": "^com\\.apple\\.keylayout\\.Russian$"
+							}
+						}
+					]
+				},
+				{
+					"type": "basic",
+					"from": {
+						"key_code": "caps_lock",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "right_shift",
+							"modifiers": [
+								"right_command",
+								"right_control",
+								"right_option"
+							],
+							"lazy": true
+						}
+					],
+					"to_if_alone": [
+						{
+							"select_input_source": {
+								"input_source_id": "^com\\.apple\\.keylayout\\.US"
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"description": "Disable Caps Lock delay",
+			"manipulators": [
+				{
+					"type": "basic",
+					"from": {
+						"key_code": "caps_lock",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "caps_lock",
+							"hold_down_milliseconds": 200
+						},
+						{
+							"key_code": "vk_none"
+						}
+					]
+				}
+			]
+		}
+	]
+}
