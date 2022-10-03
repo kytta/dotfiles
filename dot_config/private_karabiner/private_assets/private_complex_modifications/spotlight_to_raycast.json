@@ -1,8 +1,8 @@
 {
-	"title": "Open Raycast with the Spotlight button",
+	"title": "Raycast tweak by @kytta",
 	"rules": [
 		{
-			"description": "Remap F4 (Spotlight) button to Ctrl-Space",
+			"description": "On newer MacBook keyboards, remap F4 (Spotlight) button to Cmd+Space",
 			"manipulators": [
 				{
 					"from": {
@@ -12,7 +12,7 @@
 						{
 							"key_code": "spacebar",
 							"modifiers": [
-								"left_control"
+								"left_command"
 							]
 						}
 					],
