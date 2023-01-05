@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+ZDOTDIR=~/.config/zsh
+. "$ZDOTDIR"/.zshenv
