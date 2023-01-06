@@ -29,6 +29,7 @@
 	rebase = true
 [init]
 	defaultBranch = main
+	templateDir = /Users/nikita/.config/git/templateDir
 [sendemail]
 	smtpserver = smtp.mailbox.org
 	smtpuser = nikita@mailbox.org
