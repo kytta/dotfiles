@@ -3,7 +3,7 @@
 	name = Nikita Karamov
 	signingkey = AF6C280C2A34D3F39BED9366D397E9BE9E6898FA
 [core]
-	editor = 'nano' --guidestripe=72 --breaklonglines --fill=72
+	editor = micro -softwrap true -wordwrap true -colorcolumn 72
 	excludesFile = ~/.config/git/ignore
 [merge]
 	tool = vscode
