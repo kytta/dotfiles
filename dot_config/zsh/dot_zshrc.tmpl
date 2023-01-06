@@ -1,0 +1,329 @@
+#!/bin/zsh
+# chezmoi:template:left-delimiter="# [[" right-delimiter=]]
+
+# Personal Zsh configuration file. It is strongly recommended to keep all
+# shell customization and configuration (including exported environment
+# variables such as PATH) in this file or in files sourced from it.
+#
+# Documentation: https://github.com/romkatv/zsh4humans/blob/v5/README.md.
+
+
+
+# Do not do periodic auto-update on Zsh startup.
+# You can manually run `z4h update` to update everything.
+zstyle ':z4h:' auto-update      'no'
+
+# Keyboard type
+# [[ if eq .chezmoi.os "darwin" -]]
+zstyle ':z4h:bindkey' keyboard  'mac'
+# [[ else -]]
+zstyle ':z4h:bindkey' keyboard  'pc'
+# [[ end ]]
+
+# Don't start tmux.
+zstyle ':z4h:' start-tmux       no
+
+# Mark up shell's output with semantic information.
+zstyle ':z4h:' term-shell-integration 'yes'
+
+# Right-arrow key accepts one character ('partial-accept') from
+# command autosuggestions or the whole thing ('accept')?
+zstyle ':z4h:autosuggestions' forward-char 'accept'
+
+# Recursively traverse directories when TAB-completing files.
+zstyle ':z4h:fzf-complete' recurse-dirs 'no'
+
+# Enable direnv to automatically source .envrc files.
+zstyle ':z4h:direnv'         enable 'yes'
+# Show "loading" and "unloading" notifications from direnv.
+zstyle ':z4h:direnv:success' notify 'yes'
+(( ${+commands[direnv]} )) \
+  && emulate zsh -c "$(direnv export zsh)"
+
+# Disable automatic teleportation of z4h over SSH.
+zstyle ':z4h:ssh:*' enable 'no'
+[[ "$TERM" == "xterm-kitty" ]] \
+  && zstyle ':z4h:ssh:*' ssh-command command kitty +kitten ssh
+
+
+
+# Install or update core components (fzf, zsh-autosuggestions, etc.) and
+# initialize Zsh. After this point console I/O is unavailable until Zsh
+# is fully initialized. Everything that requires user interaction or can
+# perform network I/O must be done above. Everything else is best done below.
+z4h init || return
+
+
+
+# Extend PATH.
+if (( $+commands[brew] )); then
+  emulate zsh -c "$(brew shellenv)"
+
+  path=(
+    "$HOMEBREW_PREFIX/opt/node@18/bin"
+    "$HOMEBREW_PREFIX/opt/curl/bin"
+    "$HOMEBREW_PREFIX/opt/gnu-getopt/bin"
+    "$HOMEBREW_PREFIX/opt/ncurses/bin"
+
+    $path
+  )
+
+  fpath=(
+    "$HOMEBREW_PREFIX/share/zsh/site-functions"
+    $fpath
+  )
+fi
+
+path=("$HOME/.local/bin" $path)
+
+if [[ "$OSTYPE" == darwin* ]]; then
+  path+=("/Library/Apple/usr/bin" "/opt/X11/bin")
+fi
+
+fpath=(
+  "$ZDOTDIR/functions"
+  $fpath
+)
+
+
+
+# Export environment variables and load plugins.
+(( $+commands[micro] )) \
+  && export EDITOR=micro VISUAL=micro \
+  || export EDITOR=nano VISUAL=nano
+export PAGER='less'
+export LESS='--ignore-case --LONG-PROMPT --RAW-CONTROL-CHARS --chop-long-lines --hilite-unread --tabs=4'
+READNULLCMD=$PAGER  # use "<" to read files
+
+if [[ "$OSTYPE" == darwin* ]]; then
+  export BROWSER=open
+elif [[ "$OSTYPE" == cygwin* ]]; then
+  export BROWSER=cygstart
+elif [[ "$OSTYPE" == linux-android ]]; then
+  export BROWSER=termux-open
+else
+  export BROWSER=xdg-open
+fi
+
+# Homebrew
+export HOMEBREW_BAT=1
+export HOMEBREW_CASK_OPTS="$HOMEBREW_CASK_OPTS --no-quarantine"
+export HOMEBREW_CLEANUP_PERIODIC_FULL_DAYS=7
+export HOMEBREW_CLEANUP_MAX_AGE_DAYS=30
+export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_ENV_HINTS=1
+export HOMEBREW_NO_INSTALL_CLEANUP=1
+
+(( $+commands[zoxide] )) \
+  && emulate zsh -c "$(zoxide init zsh)"
+
+(( $+commands[direnv] )) \
+  && emulate zsh -c "$(direnv hook zsh)"
+
+(( $+commands[pnpm] )) \
+  && PNPM_HOME="$HOME/.local/share/pnpm" \
+  && path=( "$PNPM_HOME" $path )
+
+export ANDROID_HOME="$HOME/Library/Android/sdk" \
+  && path+=( "$ANDROID_HOME/platform-tools" )
+
+(( $+commands[pyenv] )) \
+  && export PYENV_ROOT="$HOME/.pyenv" \
+  && emulate zsh -c "$(pyenv init - zsh)"
+
+(( $+commands[nodenv] )) \
+  && emulate zsh -c "$(nodenv init - zsh)"
+
+# fix python multiprocessing on macOS
+[[ "$OSTYPE" == darwin* ]] && export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
+# [[ if ne .machine.type "server" -]]
+if (( $+commands[gpgconf] )); then
+  export GPG_TTY=$TTY
+  export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+  gpgconf --launch gpg-agent
+fi
+# [[- end ]]
+
+
+
+# Source additional local files if they exist.
+z4h source ~/.local/opt/cargo/env
+
+
+
+# Define key bindings.
+# [[ if eq .chezmoi.os "darwin" -]]
+z4h bindkey undo Ctrl+/   Shift+Tab  # undo the last command line change
+z4h bindkey redo Option+/            # redo the last undone command line change
+
+z4h bindkey z4h-cd-back    Shift+Left   # cd into the previous directory
+z4h bindkey z4h-cd-forward Shift+Right  # cd into the next directory
+z4h bindkey z4h-cd-up      Shift+Up     # cd into the parent directory
+z4h bindkey z4h-cd-down    Shift+Down   # cd into a child directory
+# [[ else -]]
+z4h bindkey z4h-backward-kill-word  Ctrl+Backspace     Ctrl+H
+z4h bindkey z4h-backward-kill-zword Ctrl+Alt+Backspace
+
+z4h bindkey undo Ctrl+/ Shift+Tab  # undo the last command line change
+z4h bindkey redo Alt+/             # redo the last undone command line change
+
+z4h bindkey z4h-cd-back    Alt+Left   # cd into the previous directory
+z4h bindkey z4h-cd-forward Alt+Right  # cd into the next directory
+z4h bindkey z4h-cd-up      Alt+Up     # cd into the parent directory
+z4h bindkey z4h-cd-down    Alt+Down   # cd into a child directory\
+# [[ end -]]
+
+# Autoload functions.
+autoload -Uz zmv
+autoload -Uz \
+  archive \
+  cdtmp \
+  gi \
+  mkdcd \
+  wttr
+[[ "$OSTYPE" == darwin* ]] && autoload -Uz unquarantine
+compdef _directories mkdcd
+
+# Fuzzy match mistyped completions.
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3>7?7:($#PREFIX+$#SUFFIX)/3))numeric)'
+
+# SSH/SCP/RSYNC
+# zstyle ':completion:*:ssh:*' hosts off
+zstyle -e ':completion:*:hosts' hosts 'reply=(
+  ${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) 2>/dev/null)"}%%[#| ]*}//,/ }
+  ${=${${${${(@M)${(f)"$(cat ~/.ssh/config 2>/dev/null)"}:#Host *}#Host }:#*\**}:#*\?*}}
+)'
+zstyle ':completion:*:ssh:argument-1:'       tag-order  hosts users
+zstyle ':completion:*:scp:argument-rest:'    tag-order  hosts files users
+zstyle ':completion:*:(ssh|scp|rdp|rsync):*:hosts' hosts
+zstyle ':completion:*:(ssh|scp|rdp|rsync):*:hosts-host' ignored-patterns '*(.|:)*' loopback ip6-loopback localhost ip6-localhost broadcasthost
+zstyle ':completion:*:(ssh|scp|rdp|rsync):*:hosts-domain' ignored-patterns '<->.<->.<->.<->' '^[-[:alnum:]]##(.[-[:alnum:]]##)##' '*@*'
+zstyle ':completion:*:(ssh|scp|rdp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<->.<->.<->|(|::)([[:xdigit:].]##:(#c,2))##(|%*))' '127.0.0.<->' '255.255.255.255' '::1' 'fe80::*'
+
+# Don't complete uninteresting users...
+zstyle ':completion:*:*:*:users' ignored-patterns \
+  adm amanda apache avahi beaglidx bin cacti canna clamav daemon \
+  dbus distcache dovecot fax ftp games gdm gkrellmd gopher \
+  hacluster haldaemon halt hsqldb ident junkbust ldap lp mail \
+  mailman mailnull mldonkey mysql nagios \
+  named netdump news nfsnobody nobody nscd ntp nut nx openvpn \
+  operator pcap postfix postgres privoxy pulse pvm quagga radvd \
+  rpc rpcuser rpm shutdown squid sshd sync uucp vcsa xfs '_*'
+zstyle '*' single-ignored show
+
+# Man
+zstyle ':completion:*:manuals' separate-sections true
+zstyle ':completion:*:manuals.(^1*)' insert-sections true
+
+# Python completions
+if  (( $+commands[register-python-argcomplete] )); then
+  (( $+commands[pipx] )) \
+    && emulate zsh -c "$(register-python-argcomplete pipx)"
+fi
+
+
+
+# Define named directories: ~w <=> Windows home directory on WSL.
+[[ -z $z4h_win_home ]] || hash -d w=$z4h_win_home
+hash -d z=$ZDOTDIR
+hash -d c=$HOME/Code
+hash -d dl=$HOME/Downloads
+hash -d ssh=$HOME/.ssh
+(( $+commands[chezmoi] )) && hash -d chezmoi="$(chezmoi source-path)"
+
+
+
+# Define aliases.
+# fix prompt symbols on paste
+alias %= \$=
+
+alias e='${(z)VISUAL:-${(z)EDITOR}}'
+alias type='type -a'
+
+alias cp="${aliases[cp]:-cp} -i"
+alias ln="${aliases[ln]:-ln} -i"
+alias mv="${aliases[mv]:-mv} -i"
+alias rm="${aliases[rm]:-rm} -i"
+alias sl='ls'  # Correction for common spelling error.
+
+alias zmv='zmv -Mv'
+alias zcp='zmv -Cv'
+alias zln='zmv -Lv'
+
+alias o="$BROWSER"
+if [[ "$OSTYPE" == cygwin* ]]; then
+  alias pbcopy='tee > /dev/clipboard'
+  alias pbpaste='cat /dev/clipboard'
+elif [[ "$OSTYPE" == linux-android ]]; then
+  alias pbcopy='termux-clipboard-set'
+  alias pbpaste='termux-clipboard-get'
+else
+  if (( $+commands[xclip] )); then
+    alias pbcopy='xclip -selection clipboard -in'
+    alias pbpaste='xclip -selection clipboard -out'
+  elif (( $+commands[xsel] )); then
+    alias pbcopy='xsel --clipboard --input'
+    alias pbpaste='xsel --clipboard --output'
+  fi
+fi
+
+(( $+commands[codium] )) && alias code=codium
+(( $+commands[lazygit] )) && alias lg=lazygit
+(( $+commands[scc] )) && alias sccc='scc --no-cocomo -c --no-min-gen'
+(( $+commands[shred] )) && alias obliterate='shred --remove'
+
+[[ "$TERM" == "xterm-kitty" ]] && alias ssh='kitty +kitten ssh'
+
+
+
+# Add flags to existing aliases.
+if (( $+commands[exa] )); then
+  alias ls='exa'
+
+  alias l='exa --oneline --all'         # one column, + hidden files.
+  alias ll='exa --long --header'        # long format
+  alias la='exa --long --header --all'  # long format, + hidden files.
+
+  alias tree='exa --tree --all --ignore-glob .git'
+fi
+
+
+
+# Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
+unsetopt auto_menu            # require an extra TAB press to open the completion menu
+unsetopt clobber              # don't let > and >> overwrite files
+setopt extended_glob 		      # enable additional glob operators
+setopt glob_star_short		    # enable ** and *** as shortcuts
+setopt hash_executables_only  # don't treat non-executable files in $path as commands
+unsetopt hist_verify          # don't verify history expansions
+setopt interactive_comments   # allow pasting of comments
+
+# Disable globbing.
+alias find='noglob find'
+alias fd='noglob fd'
+alias ftp='noglob ftp'
+alias history='noglob history'
+alias locate='noglob locate'
+alias rake='noglob rake'
+alias rsync='noglob rsync'
+alias scp='noglob scp'
+alias sftp='noglob sftp'
+
+# Smart URLs
+# Source: https://github.com/sorin-ionescu/prezto/blob/51c4ff6de4e2d1afd30e52ba19b21b1128fd1ed5/modules/environment/init.zsh#L16-L27
+autoload -Uz is-at-least
+if [[ ${ZSH_VERSION} != 5.1.1 && ${TERM} != "dumb" ]]; then
+  if is-at-least 5.2; then
+    autoload -Uz bracketed-paste-url-magic
+    zle -N bracketed-paste bracketed-paste-url-magic
+  elif is-at-least 5.1; then
+    autoload -Uz bracketed-paste-magic
+    zle -N bracketed-paste bracketed-paste-magic
+  fi
+  autoload -Uz url-quote-magic
+  zle -N self-insert url-quote-magic
+fi
