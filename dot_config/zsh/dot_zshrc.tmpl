@@ -36,9 +36,7 @@ zstyle ':z4h:fzf-complete' recurse-dirs 'no'
 # Enable direnv to automatically source .envrc files.
 zstyle ':z4h:direnv'         enable 'yes'
 # Show "loading" and "unloading" notifications from direnv.
-zstyle ':z4h:direnv:success' notify 'yes'
-(( ${+commands[direnv]} )) \
-  && emulate zsh -c "$(direnv export zsh)"
+zstyle ':z4h:direnv:success' notify 'no'
 
 # Disable automatic teleportation of z4h over SSH.
 zstyle ':z4h:ssh:*' enable 'no'
@@ -116,9 +114,6 @@ export HOMEBREW_NO_INSTALL_CLEANUP=1
 
 (( $+commands[zoxide] )) \
   && emulate zsh -c "$(zoxide init zsh)"
-
-(( $+commands[direnv] )) \
-  && emulate zsh -c "$(direnv hook zsh)"
 
 (( $+commands[pnpm] )) \
   && PNPM_HOME="$HOME/.local/share/pnpm" \
