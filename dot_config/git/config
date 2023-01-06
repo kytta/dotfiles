@@ -22,7 +22,6 @@
 [color]
 	ui = true
 [commit]
-	template = ~/.config/git/commit_template.txt
 	gpgSign = true
 [tag]
 	forceSignAnnotated = true
