@@ -45,6 +45,11 @@ zstyle ':z4h:ssh:*' enable 'no'
 
 
 
+# Install OMZ for some plugins
+z4h install ohmyzsh/ohmyzsh || return
+
+
+
 # Install or update core components (fzf, zsh-autosuggestions, etc.) and
 # initialize Zsh. After this point console I/O is unavailable until Zsh
 # is fully initialized. Everything that requires user interaction or can
@@ -147,6 +152,17 @@ z4h source ~/.local/opt/cargo/env
 
 
 
+# Load extra plugins
+z4h load ohmyzsh/ohmyzsh/plugins/autopep8
+z4h load ohmyzsh/ohmyzsh/plugins/brew
+z4h load ohmyzsh/ohmyzsh/plugins/colored-man-pages
+z4h load ohmyzsh/ohmyzsh/plugins/fd
+z4h load ohmyzsh/ohmyzsh/plugins/git-extras
+z4h load ohmyzsh/ohmyzsh/plugins/pip
+z4h load ohmyzsh/ohmyzsh/plugins/pre-commit
+z4h load ohmyzsh/ohmyzsh/plugins/ripgrep
+z4h load ohmyzsh/ohmyzsh/plugins/sublime
+z4h load ohmyzsh/ohmyzsh/plugins/sudo
 # Define key bindings.
 # [[ if eq .chezmoi.os "darwin" -]]
 z4h bindkey undo Ctrl+/   Shift+Tab  # undo the last command line change
