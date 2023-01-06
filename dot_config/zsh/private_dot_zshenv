@@ -9,9 +9,15 @@
 if [ -n "${ZSH_VERSION-}" ]; then
   # If you are certain that you must export some environment variables
   # in ~/.zshenv (see comments at the top!), do it here:
-  #
-  #   export GOPATH=$HOME/go
-  #
+  export XDG_CONFIG_HOME="$HOME/.config"
+
+  if [[ "$OSTYPE" == darwin* ]]; then
+    export XDG_CACHE_HOME="$HOME/Library/Caches"
+  elif [[ "$OSTYPE" == cygwin* ]]; then
+    export XDG_CACHE_HOME="$HOME/AppData/Local/Temp"
+  else
+    export XDG_CACHE_HOME=".cache"
+  fi
   # Do not change anything else in this file.
 
   : ${ZDOTDIR:=~/.config/zsh}
