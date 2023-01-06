@@ -144,6 +144,11 @@ if (( $+commands[gpgconf] )); then
   gpgconf --launch gpg-agent
 fi
 # [[- end ]]
+if (( $+commands[codium] )); then
+  export VSCODE=codium
+elif (( $+commands[code] )); then
+  export VSCODE=code
+fi
 
 
 
@@ -164,6 +169,10 @@ z4h load ohmyzsh/ohmyzsh/plugins/pre-commit
 z4h load ohmyzsh/ohmyzsh/plugins/ripgrep
 z4h load ohmyzsh/ohmyzsh/plugins/sublime
 z4h load ohmyzsh/ohmyzsh/plugins/sudo
+z4h load ohmyzsh/ohmyzsh/plugins/vscode
+
+
+
 # Define key bindings.
 # [[ if eq .chezmoi.os "darwin" -]]
 z4h bindkey undo Ctrl+/   Shift+Tab  # undo the last command line change
@@ -191,7 +200,6 @@ autoload -Uz zmv
 autoload -Uz \
   archive \
   cdtmp \
-  gi \
   mkdcd \
   wttr
 [[ "$OSTYPE" == darwin* ]] && autoload -Uz unquarantine
@@ -283,7 +291,6 @@ else
   fi
 fi
 
-(( $+commands[codium] )) && alias code=codium
 (( $+commands[lazygit] )) && alias lg=lazygit
 (( $+commands[scc] )) && alias sccc='scc --no-cocomo -c --no-min-gen'
 (( $+commands[shred] )) && alias obliterate='shred --remove'
