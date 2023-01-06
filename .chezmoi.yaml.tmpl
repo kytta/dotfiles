@@ -1,3 +1,5 @@
+# chezmoi:template:left-delimiter="# [[" right-delimiter=]]
+
 encryption: age
 
 age:
@@ -6,14 +8,12 @@ age:
     - age1vnhe3sm45vmctsz0ngknenxn2jw8q92fp7auqxpmac6jj4csgd5qq8szq4  # lovelace
     - age1jw9ld492gylvdz35t43k9r30dalythd8q9uzqrqnx6a30hat8ptqmgm5rj  # yuno
 
-
-
 data:
-  {{ if eq .chezmoi.os "darwin" }}
+  # [[ if eq .chezmoi.os "darwin" -]]
   homebrew:
-    {{ if eq .chezmoi.arch "arm64" }}
+    # [[ if eq .chezmoi.arch "arm64" -]]
     prefix: "/opt/homebrew"
-    {{ else }}
+    # [[- else -]]
     prefix: "/usr/local"
-    {{ end }}
-  {{ end }}
+    # [[- end -]]
+  # [[- end ]]
