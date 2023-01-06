@@ -1,7 +1,7 @@
 [user]
 	email = me@kytta.dev
 	name = Nikita Karamov
-	signingkey = ~/.ssh/id_ed25519
+	signingkey = AF6C280C2A34D3F39BED9366D397E9BE9E6898FA
 [core]
 	editor = 'nano' --guidestripe=72 --breaklonglines --fill=72
 	excludesFile = ~/.config/git/ignore
@@ -16,7 +16,7 @@
 [difftool "difftastic"]
 	cmd = difft $LOCAL $REMOTE
 [gpg]
-	format = ssh
+	format = openpgp
 [gpg "ssh"]
 	allowedSignersFile = ~/.ssh/allowed_signers
 [color]
