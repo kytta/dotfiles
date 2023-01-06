@@ -10,7 +10,7 @@
 [mergetool "vscode"]
 	cmd = code --wait $MERGED
 [diff]
-	tool = vscode
+	tool = difftastic
 [difftool "vscode"]
 	cmd = code --wait --diff $LOCAL $REMOTE
 [difftool "difftastic"]
