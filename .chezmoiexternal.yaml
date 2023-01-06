@@ -28,8 +28,8 @@
   stripComponents: 1
   url: https://github.com/zsh-users/zsh-syntax-highlighting/archive/refs/heads/master.tar.gz
 
-.local/share/nano-syntax-highlighting:
+.config/nano/highlight:
   type: archive
   refreshPeriod: 672h  # 4 weeks
   stripComponents: 1
-  url: https://github.com/scopatz/nanorc/archive/refs/heads/master.tar.gz
+  url: https://github.com/serialhex/nano-highlight/archive/refs/heads/master.tar.gz

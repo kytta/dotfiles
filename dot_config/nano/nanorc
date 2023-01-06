@@ -1,4 +1,4 @@
-include "~/.local/share/nano-syntax-highlighting/*.nanorc"
+include "~/.config/nano/highlight/*.nanorc"
 
 set tabsize 4
 set linenumbers
