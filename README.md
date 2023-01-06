@@ -7,7 +7,7 @@ Collection of configuration files.
 1. Install [chezmoi](https://www.chezmoi.io/install/).
 
    ```sh
-   sh -c "$(curl -fsLS chezmoi.io/get)"
+   sh -c "$(curl -fsLS get.chezmoi.io)" -- -b $HOME/.local/bin
    ```
 
 2. Load the dotfiles.
