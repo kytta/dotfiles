@@ -1,2 +1,9 @@
-0 */6 * * * {{ .homebrew.prefix -}}/bin/brew update >/dev/null 2>&1
-0 12 */10 * * {{ .homebrew.prefix -}}/bin/tldr --update >/dev/null 2>&1
+{{ $brewPath := lookPath "brew" -}}
+{{- if $brewPath -}}
+0 */6 * * * {{ $brewPath }} update >/dev/null 2>&1
+{{- end }}
+
+{{ $tldrPath := lookPath "tldr" -}}
+{{- if $tldrPath -}}
+0 12 */10 * * {{ $tldrPath }} --update >/dev/null 2>&1
+{{- end }}

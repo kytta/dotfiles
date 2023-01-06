@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # crontab hash: {{ includeTemplate "dot_config/crontab.tmpl" | sha256sum }}
-crontab {{ joinPath .chezmoi.homeDir .xdg.config "crontab" }}
+crontab {{ joinPath .chezmoi.homeDir ".config" "crontab" }}
