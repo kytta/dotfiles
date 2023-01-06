@@ -1,7 +1,4 @@
 {{ if eq .chezmoi.os "darwin" -}}
-# Created by https://www.toptal.com/developers/gitignore/api/macOS
-# Edit at https://www.toptal.com/developers/gitignore?templates=macOS
-
 ### macOS ###
 # General
 .DS_Store
@@ -31,15 +28,9 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-### macOS Patch ###
 # iCloud generated files
 *.icloud
-
-# End of https://www.toptal.com/developers/gitignore/api/macOS
 {{ else if eq .chezmoi.os "linux" -}}
-# Created by https://www.toptal.com/developers/gitignore/api/Linux
-# Edit at https://www.toptal.com/developers/gitignore?templates=Linux
-
 ### Linux ###
 *~
 
@@ -54,12 +45,7 @@ Temporary Items
 
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
-
-# End of https://www.toptal.com/developers/gitignore/api/Linux
 {{ else if eq .chezmoi.os "windows" -}}
-# Created by https://www.toptal.com/developers/gitignore/api/Windows
-# Edit at https://www.toptal.com/developers/gitignore?templates=Windows
-
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
@@ -85,6 +71,17 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-
-# End of https://www.toptal.com/developers/gitignore/api/Windows
 {{ end -}}
+
+### Sublime Text ###
+# Cache files for Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+
+# Workspace files are user-specific
+*.sublime-workspace
+
+### Wakatime ###
+.wakatime_project
+.wakatime-project
