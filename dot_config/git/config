@@ -29,3 +29,8 @@
 	rebase = true
 [init]
 	defaultBranch = main
+[sendemail]
+	smtpserver = smtp.mailbox.org
+	smtpuser = nikita@mailbox.org
+	smtpencryption = ssl
+	smtpserverport = 465
