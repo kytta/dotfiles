@@ -1,12 +1,19 @@
 {
-    "title": "Keychron Mic -> DND",
+    "title": "Keychron DnD by @kytta",
     "rules": [
         {
-            "description": "Keychron Mic button to Control+F10",
+            "description": "Remap Keychron K8 Microphone button to F16",
             "manipulators": [
                 {
                     "from": {
-                        "key_code": "spacebar",
+                        "simultaneous": [
+                            {
+                                "key_code": "spacebar"
+                            },
+                            {
+                                "any": "keyboard_fn"
+                            }
+                        ],
                         "modifiers": {
                             "mandatory": [
                                 "fn"
@@ -15,13 +22,21 @@
                     },
                     "to": [
                         {
-                            "key_code": "f10",
-                            "modifiers": [
-                                "left_control"
-                            ]
+                            "key_code": "f16"
                         }
                     ],
-                    "type": "basic"
+                    "type": "basic",
+                    "conditions": [
+                        {
+                            "type": "device_if",
+                            "identifiers": [
+                                {
+                                    "vendor_id": 1452,
+                                    "product_id": 591
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         }
