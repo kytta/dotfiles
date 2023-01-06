@@ -6,9 +6,6 @@ LICENSE
 private_Library/
 
 dot_config/private_karabiner/
-
-run_once_defaults-write.sh
-run_once_before_install-homebrew.sh
 {{ end }}
 
 {{ if ne .machine.type "personal" }}
@@ -17,5 +14,7 @@ dot_config/rclone/
 {{ end }}
 
 {{ if eq .machine.type "server" }}
+dot_config/beets/
+dot_config/private_karabiner/
 encrypted_dot_wakatime.cfg.age
 {{ end }}
