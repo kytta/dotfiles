@@ -1,5 +1,7 @@
 # chezmoi:template:left-delimiter="# [[" right-delimiter=]]
 
+# [[ $machineType := promptString "What is the machine type? [personal/work/server]" "personal" ]]
+
 encryption: age
 
 age:
@@ -9,6 +11,8 @@ age:
     - age1jw9ld492gylvdz35t43k9r30dalythd8q9uzqrqnx6a30hat8ptqmgm5rj  # yuno
 
 data:
+  machine:
+    type: # [[ $machineType | quote ]]
   # [[ if eq .chezmoi.os "darwin" -]]
   homebrew:
     # [[ if eq .chezmoi.arch "arm64" -]]
