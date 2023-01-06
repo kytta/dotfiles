@@ -16,7 +16,7 @@ if [ -n "${ZSH_VERSION-}" ]; then
   elif [[ "$OSTYPE" == cygwin* ]]; then
     export XDG_CACHE_HOME="$HOME/AppData/Local/Temp"
   else
-    export XDG_CACHE_HOME=".cache"
+    export XDG_CACHE_HOME="$HOME/.cache"
   fi
   # Do not change anything else in this file.
 
