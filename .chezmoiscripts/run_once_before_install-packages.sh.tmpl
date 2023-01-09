@@ -48,7 +48,7 @@ elif command -v dnf > /dev/null; then
 elif command -v apt > /dev/null; then
   if [ -f "/etc/debian_version" ]; then
     sudo apt -y update
-    sudo apt -y --no-install-recommends --ignore-missing \
+    sudo apt -y --no-install-recommends --ignore-missing install \
       curl \
       rust-exa \
       rust-fd-find \
@@ -62,7 +62,7 @@ elif command -v apt > /dev/null; then
       zsh
   elif grep "NAME=\"Ubuntu\"" /etc/os-release; then
     sudo apt -y update
-    sudo apt -y --no-install-recommends --ignore-missing \
+    sudo apt -y --no-install-recommends --ignore-missing install \
       curl \
       rust-exa \
       rust-fd-find \
