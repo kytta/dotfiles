@@ -60,7 +60,7 @@ z4h init || return
 
 # Extend PATH.
 if (( $+commands[brew] )); then
-  emulate zsh -c "$(brew shellenv)"
+  eval "$(brew shellenv)"
 
   path=(
     "$HOMEBREW_PREFIX/opt/node@18/bin"
@@ -118,7 +118,7 @@ export HOMEBREW_NO_ENV_HINTS=1
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 
 (( $+commands[zoxide] )) \
-  && emulate zsh -c "$(zoxide init zsh)"
+  && eval "$(zoxide init zsh)"
 
 (( $+commands[pnpm] )) \
   && PNPM_HOME="$HOME/.local/share/pnpm" \
@@ -129,10 +129,10 @@ export ANDROID_HOME="$HOME/Library/Android/sdk" \
 
 (( $+commands[pyenv] )) \
   && export PYENV_ROOT="$HOME/.pyenv" \
-  && emulate zsh -c "$(pyenv init - zsh)"
+  && eval "$(pyenv init - zsh)"
 
 (( $+commands[nodenv] )) \
-  && emulate zsh -c "$(nodenv init - zsh)"
+  && eval "$(nodenv init - zsh)"
 
 # fix python multiprocessing on macOS
 [[ "$OSTYPE" == darwin* ]] && export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
@@ -242,7 +242,7 @@ zstyle ':completion:*:manuals.(^1*)' insert-sections true
 # Python completions
 if  (( $+commands[register-python-argcomplete] )); then
   (( $+commands[pipx] )) \
-    && emulate zsh -c "$(register-python-argcomplete pipx)"
+    && eval "$(register-python-argcomplete pipx)"
 fi
 
 
