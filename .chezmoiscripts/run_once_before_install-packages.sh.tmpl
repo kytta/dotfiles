@@ -30,7 +30,7 @@ if command -v brew > /dev/null; then
     zsh
 elif command -v dnf > /dev/null; then
   if [ -f "/etc/fedora-release" ]; then
-    dnf --refresh -y install \
+    sudo dnf --refresh -y install \
       curl \
       rust-exa \
       rust-fd-find \
@@ -47,8 +47,8 @@ elif command -v dnf > /dev/null; then
   fi
 elif command -v apt > /dev/null; then
   if [ -f "/etc/debian_version" ]; then
-    apt -y update
-    apt -y --no-install-recommends --ignore-missing \
+    sudo apt -y update
+    sudo apt -y --no-install-recommends --ignore-missing \
       curl \
       rust-exa \
       rust-fd-find \
@@ -61,8 +61,8 @@ elif command -v apt > /dev/null; then
       xclip \
       zsh
   elif grep "NAME=\"Ubuntu\"" /etc/os-release; then
-    apt -y update
-    apt -y --no-install-recommends --ignore-missing \
+    sudo apt -y update
+    sudo apt -y --no-install-recommends --ignore-missing \
       curl \
       rust-exa \
       rust-fd-find \
