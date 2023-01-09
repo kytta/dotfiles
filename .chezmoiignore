@@ -15,6 +15,7 @@ dot_config/rclone/
 
 {{ if eq .machine.type "server" }}
 dot_config/beets/
+dot_config/kitty/
 dot_config/private_karabiner/
 encrypted_dot_wakatime.cfg.age
 {{ end }}
