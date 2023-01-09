@@ -50,14 +50,14 @@ elif command -v apt > /dev/null; then
     sudo apt -y update
     sudo apt -y --no-install-recommends --ignore-missing install \
       curl \
-      rust-exa \
-      rust-fd-find \
+      exa \
+      fd-find \
       git \
       micro \
       nano \
-      rust-ripgrep \
+      ripgrep \
       wget \
-      rust-zoxide \
+      zoxide \
       xclip \
       zsh
   elif grep "NAME=\"Ubuntu\"" /etc/os-release; then
