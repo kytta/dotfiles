@@ -18,6 +18,7 @@ if [ -n "${ZSH_VERSION-}" ]; then
   else
     export XDG_CACHE_HOME="$HOME/.cache"
   fi
+  export WAKATIME_HOME="$XDG_CONFIG_HOME"/wakatime
   # Do not change anything else in this file.
 
   : ${ZDOTDIR:=~/.config/zsh}
