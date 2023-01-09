@@ -133,7 +133,6 @@ export ANDROID_HOME="$HOME/Library/Android/sdk" \
   && path+=( "$ANDROID_HOME/platform-tools" )
 
 (( $+commands[pyenv] )) \
-  && export PYENV_ROOT="$HOME/.pyenv" \
   && eval "$(pyenv init - zsh)"
 
 (( $+commands[nodenv] )) \
