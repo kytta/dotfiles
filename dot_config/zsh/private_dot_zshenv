@@ -30,8 +30,6 @@ if [ -n "${ZSH_VERSION-}" ]; then
   export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo 
   export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
   export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
-  export NODENV_ROOT="$XDG_DATA_HOME"/nodenv
-  export PYENV_ROOT="$XDG_DATA_HOME"/pyenv
   export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
   export CARGO_HOME="$XDG_DATA_HOME"/cargo
   export WAKATIME_HOME="$XDG_CONFIG_HOME"/wakatime
