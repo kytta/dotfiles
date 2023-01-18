@@ -13,7 +13,7 @@ Collection of configuration files.
 2. Load the dotfiles.
 
    ```sh
-   chezmoi init codeberg.org/kytta/dotfiles
+   chezmoi init kytta
    ```
 
 3. Diff (optional) and apply.
@@ -36,5 +36,5 @@ Uses code from:
 
 ---
 
-This project is hosted on Codeberg:
-<https://codeberg.org/kytta/dotfiles>
+This project is hosted on GitHub:
+<https://github.com/kytta/dotfiles>
