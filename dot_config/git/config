@@ -27,6 +27,8 @@
 	forceSignAnnotated = true
 [pull]
 	rebase = true
+[rebase]
+	autoStash = true
 [init]
 	defaultBranch = main
 	templateDir = /Users/nikita/.config/git/templateDir
