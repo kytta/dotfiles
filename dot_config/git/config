@@ -37,3 +37,6 @@
 	smtpuser = nikita@mailbox.org
 	smtpencryption = ssl
 	smtpserverport = 465
+[alias]
+	pushall = !git push origin -4 --all --follow-tags && git remote | grep -vF 'origin' | xargs -n1 -P 0 git push -4 --all --follow-tags --no-verify
+	fetchall = !git remote | xargs -L1 -P 0 git fetch
