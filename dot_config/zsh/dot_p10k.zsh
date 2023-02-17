@@ -33,7 +33,6 @@ typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
   virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
   pyenv                   # python environment (https://github.com/pyenv/pyenv)
   nodenv                  # node.js version from nodenv (https://github.com/nodenv/nodenv)
-  java_version          # java version (https://www.java.com/)
   package               # name@version from package.json (https://docs.npmjs.com/files/package.json)
   gcloud                  # google cloud cli account and project (https://cloud.google.com/)
   google_app_cred         # google application credentials (https://cloud.google.com/docs/authentication/production)
@@ -46,7 +45,7 @@ typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
 )
 
 # Defines character set used by powerlevel10k. It's best to let `p10k configure` set it for you.
-typeset -g POWERLEVEL9K_MODE=compatible
+typeset -g POWERLEVEL9K_MODE=nerdfont-complete
 # When set to `moderate`, some icons will have an extra space after them. This is meant to avoid
 # icon overlap when using non-monospace fonts. When set to `none`, spaces are not added.
 typeset -g POWERLEVEL9K_ICON_PADDING=none
@@ -93,7 +92,7 @@ typeset -g POWERLEVEL9K_RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL=
 # POWERLEVEL9K_MULTILINE_FIRST_PROMPT_GAP_CHAR=' ' below.
 typeset -g POWERLEVEL9K_SHOW_RULER=false
 typeset -g POWERLEVEL9K_RULER_CHAR='─'        # reasonable alternative: '·'
-typeset -g POWERLEVEL9K_RULER_FOREGROUND=238
+typeset -g POWERLEVEL9K_RULER_FOREGROUND=242
 
 # Filler between left and right prompt on the first prompt line. You can set it to '·' or '─'
 # to make it easier to see the alignment between left and right prompt and to separate prompt
@@ -101,10 +100,10 @@ typeset -g POWERLEVEL9K_RULER_FOREGROUND=238
 # the number of prompt lines. You'll probably want to set POWERLEVEL9K_SHOW_RULER=false
 # if using this. You might also like POWERLEVEL9K_PROMPT_ADD_NEWLINE=false for more compact
 # prompt.
-typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_GAP_CHAR='─'
+typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_GAP_CHAR=' '
 if [[ $POWERLEVEL9K_MULTILINE_FIRST_PROMPT_GAP_CHAR != ' ' ]]; then
   # The color of the filler.
-  typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_GAP_FOREGROUND=238
+  typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_GAP_FOREGROUND=242
   # Add a space between the end of left prompt and the filler.
   typeset -g POWERLEVEL9K_LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL=' '
   # Add a space between the filler and the start of right prompt.
@@ -203,8 +202,8 @@ typeset -g POWERLEVEL9K_DIR_HYPERLINK=true
 typeset -g POWERLEVEL9K_DIR_SHOW_WRITABLE=v3
 
 #####################################[ vcs: git status ]######################################
-# Branch icon. Set this parameter to '\uF126 ' for the popular Powerline branch icon.
-typeset -g POWERLEVEL9K_VCS_BRANCH_ICON=
+# Branch icon. Set this parameter to '\UE0A0 ' for the popular Powerline branch icon.
+typeset -g POWERLEVEL9K_VCS_BRANCH_ICON='\UE0A0 '
 
 # Untracked files icon. It's really a question mark, your font isn't broken.
 # Change the value of this parameter to show a different icon.
@@ -378,20 +377,20 @@ typeset -g POWERLEVEL9K_STATUS_OK_PIPE_VISUAL_IDENTIFIER_EXPANSION='✔'
 # it will signify error by turning red.
 typeset -g POWERLEVEL9K_STATUS_ERROR=true
 typeset -g POWERLEVEL9K_STATUS_ERROR_FOREGROUND=160
-typeset -g POWERLEVEL9K_STATUS_ERROR_VISUAL_IDENTIFIER_EXPANSION='х'
+typeset -g POWERLEVEL9K_STATUS_ERROR_VISUAL_IDENTIFIER_EXPANSION='✘'
 
 # Status when the last command was terminated by a signal.
 typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL=true
 typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_FOREGROUND=160
 # Use terse signal names: "INT" instead of "SIGINT(2)".
 typeset -g POWERLEVEL9K_STATUS_VERBOSE_SIGNAME=false
-typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_VISUAL_IDENTIFIER_EXPANSION='х'
+typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_VISUAL_IDENTIFIER_EXPANSION='✘'
 
 # Status when some part of a pipe command fails and the overall exit status is also non-zero.
 # It may look like this: 1|0.
 typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE=true
 typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_FOREGROUND=160
-typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_VISUAL_IDENTIFIER_EXPANSION='х'
+typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_VISUAL_IDENTIFIER_EXPANSION='✘'
 
 ###################[ command_execution_time: duration of the last command ]###################
 # Show duration of the last command if takes at least this many seconds.
@@ -654,6 +653,12 @@ typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=off
 #              during zsh initialization. Choose this if you've read and understood
 #              https://github.com/romkatv/powerlevel10k/blob/master/README.md#instant-prompt.
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
+# Hot reload allows you to change POWERLEVEL9K options after Powerlevel10k has been initialized.
+# For example, you can type POWERLEVEL9K_BACKGROUND=red and see your prompt turn red. Hot reload
+# can slow down prompt by 1-2 milliseconds, so it's better to keep it turned off unless you
+# really need it.
+typeset -g POWERLEVEL9K_DISABLE_HOT_RELOAD=true
 
 # If p10k is already loaded, reload configuration.
 # This works even with POWERLEVEL9K_DISABLE_HOT_RELOAD=true.
