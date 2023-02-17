@@ -129,7 +129,7 @@ export HOMEBREW_NO_INSTALL_CLEANUP=1
   && export PNPM_HOME="$XDG_DATA_HOME/pnpm" \
   && path=( "$PNPM_HOME" $path )
 
-export ANDROID_HOME="$HOME/Library/Android/sdk" \
+export ANDROID_HOME="$XDG_DATA_HOME/android" \
   && path+=( "$ANDROID_HOME/platform-tools" )
 
 (( $+commands[pyenv] )) \
