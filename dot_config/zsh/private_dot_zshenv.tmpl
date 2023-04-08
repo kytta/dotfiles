@@ -29,7 +29,7 @@ if [ -n "${ZSH_VERSION-}" ]; then
   export GOMODCACHE="$XDG_CACHE_HOME"/go/mod
   export MYSQL_HISTFILE="$XDG_DATA_HOME"/mysql_history
   export TERMINFO="$XDG_DATA_HOME"/terminfo
-  export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo 
+  export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
   export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
   export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
   export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
@@ -38,7 +38,7 @@ if [ -n "${ZSH_VERSION-}" ]; then
   # [[ if eq .chezmoi.os "darwin" -]]
   path+=("/Library/Apple/usr/bin" "/opt/X11/bin")
   # [[ end ]]
-  
+
   # Homebrew
   # [[ if .homebrew ]]
   export HOMEBREW_BAT=1
