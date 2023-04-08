@@ -42,3 +42,5 @@
 	fetchall = !git remote | xargs -L1 -P 0 git fetch
 [help]
 	autocorrect = prompt
+[github]
+	user = kytta
