@@ -3,23 +3,24 @@ LICENSE
 .chezmoisymlinks
 
 {{ if ne .chezmoi.os "darwin" }}
-private_Library/
+Library/
 
 dot_config/private_karabiner/
 {{ end }}
 
 {{ if ne .chezmoi.os "linux" }}
-dot_config/hatch/
+.config/hatch/
 {{ end }}
 
 {{ if ne .machine.type "personal" }}
-dot_config/beets/
-dot_config/rclone/
+.config/beets/
+.config/rclone/
 {{ end }}
 
 {{ if eq .machine.type "server" }}
-dot_config/beets/
-dot_config/kitty/
-dot_config/private_karabiner/
-encrypted_dot_wakatime.cfg.age
+.config/beets/
+.config/hatch/
+.config/kitty/
+.config/karabiner/
+.wakatime.cfg
 {{ end }}
