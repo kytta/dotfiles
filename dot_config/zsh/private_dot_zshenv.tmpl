@@ -34,11 +34,40 @@ if [ -n "${ZSH_VERSION-}" ]; then
   export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
   export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
   export CARGO_HOME="$XDG_DATA_HOME"/cargo
-  # Do not change anything else in this file.
-  
-  # [[ if stat (joinPath .homebrew.prefix "bin" "brew") ]]
-  eval "$(# [[ joinPath .homebrew.prefix "bin" "brew" ]] shellenv)"
+
+  # [[ if eq .chezmoi.os "darwin" -]]
+  path+=("/Library/Apple/usr/bin" "/opt/X11/bin")
   # [[ end ]]
+  
+  # Homebrew
+  # [[ if .homebrew ]]
+  eval "$(# [[ joinPath .homebrew.prefix "bin" "brew" ]] shellenv)"
+
+  path=(
+    "$HOMEBREW_PREFIX/opt/node@18/bin"
+    "$HOMEBREW_PREFIX/opt/curl/bin"
+    "$HOMEBREW_PREFIX/opt/gnu-getopt/bin"
+    "$HOMEBREW_PREFIX/opt/ncurses/bin"
+
+    $path
+  )
+
+  fpath=(
+    "$HOMEBREW_PREFIX/share/zsh/site-functions"
+    $fpath
+  )
+  # [[ end ]]
+
+  # Local bins
+  path=("$HOME/.local/bin" $path)
+  fpath=(
+    "$ZDOTDIR/functions"
+    $fpath
+  )
+  manpath=(
+    "$HOME/.local/share/man"
+    $manpath
+  )
 
   : ${ZDOTDIR:=~/.config/zsh}
   setopt no_global_rcs

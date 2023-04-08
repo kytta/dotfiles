@@ -56,45 +56,6 @@ z4h install ohmyzsh/ohmyzsh || return
 # perform network I/O must be done above. Everything else is best done below.
 z4h init || return
 
-
-
-# Extend PATH.
-if (( $+commands[brew] )); then
-  eval "$(brew shellenv)"
-
-  path=(
-    "$HOMEBREW_PREFIX/opt/node@18/bin"
-    "$HOMEBREW_PREFIX/opt/curl/bin"
-    "$HOMEBREW_PREFIX/opt/gnu-getopt/bin"
-    "$HOMEBREW_PREFIX/opt/ncurses/bin"
-
-    $path
-  )
-
-  fpath=(
-    "$HOMEBREW_PREFIX/share/zsh/site-functions"
-    $fpath
-  )
-fi
-
-path=("$HOME/.local/bin" $path)
-
-if [[ "$OSTYPE" == darwin* ]]; then
-  path+=("/Library/Apple/usr/bin" "/opt/X11/bin")
-fi
-
-fpath=(
-  "$ZDOTDIR/functions"
-  $fpath
-)
-
-manpath=(
-  "$HOME/.local/share/man"
-  $manpath
-)
-
-
-
 # Export environment variables and load plugins.
 (( $+commands[micro] )) \
   && export EDITOR=micro VISUAL=micro \
