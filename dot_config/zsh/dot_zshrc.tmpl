@@ -91,9 +91,6 @@ export ANDROID_HOME="$XDG_DATA_HOME/android" \
 (( $+commands[gcloud] )) \
   && source "$HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 
-# fix python multiprocessing on macOS
-[[ "$OSTYPE" == darwin* ]] && export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
-
 (( $+commands[all-repos-clone] )) \
   && export ALL_REPOS_CONFIG_FILENAME="$XDG_CONFIG_HOME"/all-repos.json \
   && eval "$(all-repos-complete -C $ALL_REPOS_CONFIG_FILENAME  --zsh)"
