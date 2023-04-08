@@ -230,6 +230,25 @@ hash -d ssh=$HOME/.ssh
 (( $+commands[chezmoi] )) && hash -d chezmoi="$(chezmoi source-path)"
 
 
+#
+# Settings
+#
+
+# bat(1)
+if (( $+commands[bat] )); then
+  export BAT_STYLE=plain
+  export BAT_THEME=OneHalfDark
+
+  # set bat as man pager
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+  # highlight help messages with bat
+  h () {
+    "$@" --help 2>&1 | bat --plain --language=help
+  }
+  alias cat=bat
+fi
+
 
 # Define aliases.
 # fix prompt symbols on paste
