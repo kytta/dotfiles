@@ -56,10 +56,13 @@ z4h install ohmyzsh/ohmyzsh || return
 # perform network I/O must be done above. Everything else is best done below.
 z4h init || return
 
-# Export environment variables and load plugins.
-(( $+commands[micro] )) \
-  && export EDITOR=micro VISUAL=micro \
-  || export EDITOR=nano VISUAL=nano
+# Editors
+export EDITOR=nano VISUAL=nano
+if (( $+commands[micro] )); then
+  export EDITOR=micro VISUAL=micro
+fi
+
+# Pagers
 export PAGER='less'
 export LESS='--ignore-case --LONG-PROMPT --RAW-CONTROL-CHARS --chop-long-lines --hilite-unread --tabs=4'
 READNULLCMD=$PAGER  # use "<" to read files
