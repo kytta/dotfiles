@@ -9,7 +9,6 @@ dot_config/private_karabiner/
 {{ end }}
 
 {{ if ne .chezmoi.os "linux" }}
-.config/hatch/
 {{ end }}
 
 {{ if ne .machine.type "personal" }}

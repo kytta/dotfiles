@@ -1,1 +1,47 @@
-{{- template "hatch.toml" . -}}
+# chezmoi:template:left-delimiter="# [[" right-delimiter=]]
+
+mode = "local"
+project = ""
+shell = "zsh"
+
+[dirs]
+project = []
+python = "isolated"
+data = "# [[- .chezmoi.homeDir -]]/.local/share/hatch"
+# [[ if eq .chezmoi.os "darwin" -]]
+cache = "# [[- .chezmoi.homeDir -]]/Library/Caches/hatch"
+# [[ else if eq .chezmoi.os "linux" -]]
+cache = "# [[- .chezmoi.homeDir -]]/.cache/hatch"
+# [[ end ]]
+
+[dirs.env]
+virtual = ".venv"
+
+[projects]
+
+[publish.index]
+repo = "main"
+
+[template]
+name = "Nikita Karamov"
+email = "me@kytta.dev"
+
+[template.licenses]
+headers = true
+default = [
+    "ISC",
+]
+
+[template.plugins.default]
+tests = true
+ci = true
+src-layout = true
+
+[terminal.styles]
+info = "bold"
+success = "bold cyan"
+error = "bold red"
+warning = "bold yellow"
+waiting = "bold magenta"
+debug = "bold"
+spinner = "moon"

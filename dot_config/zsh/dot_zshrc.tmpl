@@ -140,6 +140,9 @@ export ANDROID_HOME="$XDG_DATA_HOME/android" \
   && export NODENV_ROOT="$XDG_DATA_HOME"/nodenv \
   && eval "$(nodenv init - zsh)"
 
+(( $+commands[hatch] )) \
+  && export HATCH_CONFIG="$XDG_CONFIG_HOME/hatch/config.toml"
+
 (( $+commands[gcloud] )) \
   && source "$HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 
