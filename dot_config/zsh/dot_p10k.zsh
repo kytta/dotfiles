@@ -14,7 +14,12 @@ typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
   # =========================[ Line #1 ]=========================
   context                 # user@hostname
   dir                     # current directory
+  direnv
+  background_jobs
   vcs                     # git status
+  virtualenv
+  status
+  command_execution_time
   # =========================[ Line #2 ]=========================
   newline                 # \n
   prompt_char             # prompt symbol
@@ -24,23 +29,23 @@ typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
 # Right prompt on the last prompt line (where you are typing your commands) gets
 # automatically hidden when the input line reaches it. Right prompt above the
 # last prompt line gets hidden if it would overlap with left prompt.
-typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
-  # =========================[ Line #1 ]=========================
-  status                  # exit code of the last command
-  command_execution_time  # duration of the last command
-  background_jobs         # presence of background jobs
-  direnv                  # direnv status (https://direnv.net/)
-  virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
-  pyenv                   # python environment (https://github.com/pyenv/pyenv)
-  nodenv                  # node.js version from nodenv (https://github.com/nodenv/nodenv)
-  package               # name@version from package.json (https://docs.npmjs.com/files/package.json)
-  gcloud                  # google cloud cli account and project (https://cloud.google.com/)
-  google_app_cred         # google application credentials (https://cloud.google.com/docs/authentication/production)
-  nnn                     # nnn shell (https://github.com/jarun/nnn)
-  vim_shell               # vim shell indicator (:sh)
-  # =========================[ Line #2 ]=========================
-  newline                 # \n
-)
+typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
+# # =========================[ Line #1 ]=========================
+  # status                  # exit code of the last command
+  # command_execution_time  # duration of the last command
+  # background_jobs         # presence of background jobs
+  # direnv                  # direnv status (https://direnv.net/)
+  # virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
+  # pyenv                   # python environment (https://github.com/pyenv/pyenv)
+  # nodenv                  # node.js version from nodenv (https://github.com/nodenv/nodenv)
+  # package               # name@version from package.json (https://docs.npmjs.com/files/package.json)
+  # gcloud                  # google cloud cli account and project (https://cloud.google.com/)
+  # google_app_cred         # google application credentials (https://cloud.google.com/docs/authentication/production)
+  # nnn                     # nnn shell (https://github.com/jarun/nnn)
+  # vim_shell               # vim shell indicator (:sh)
+  # # =========================[ Line #2 ]=========================
+  # newline                 # \n
+# )
 
 # Defines character set used by powerlevel10k. It's best to let `p10k configure` set it for you.
 typeset -g POWERLEVEL9K_MODE=nerdfont-complete
@@ -76,9 +81,9 @@ typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=
 typeset -g POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_PREFIX=
 typeset -g POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX=
 # Connect right prompt lines with these symbols.
-typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_SUFFIX=
-typeset -g POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_SUFFIX=
-typeset -g POWERLEVEL9K_MULTILINE_LAST_PROMPT_SUFFIX=
+typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_SUFFIX=''
+typeset -g POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_SUFFIX=''
+typeset -g POWERLEVEL9K_MULTILINE_LAST_PROMPT_SUFFIX=''
 
 # The left end of left prompt.
 typeset -g POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL=
@@ -118,9 +123,9 @@ typeset -g POWERLEVEL9K_PROMPT_CHAR_OK_{VIINS,VICMD,VIVIS,VIOWR}_FOREGROUND=2
 # Red prompt symbol if the last command failed.
 typeset -g POWERLEVEL9K_PROMPT_CHAR_ERROR_{VIINS,VICMD,VIVIS,VIOWR}_FOREGROUND=1
 # Default prompt symbol.
-typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIINS_CONTENT_EXPANSION='❯'
+typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIINS_CONTENT_EXPANSION='$'
 # Prompt symbol in command vi mode.
-typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VICMD_CONTENT_EXPANSION='❮'
+typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VICMD_CONTENT_EXPANSION='¢'
 # Prompt symbol in visual vi mode.
 typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIVIS_CONTENT_EXPANSION='V'
 # Prompt symbol in overwrite vi mode.
@@ -207,7 +212,7 @@ typeset -g POWERLEVEL9K_DIR_CLASSES=()
 
 #####################################[ vcs: git status ]######################################
 # Branch icon. Set this parameter to '\UE0A0 ' for the popular Powerline branch icon.
-typeset -g POWERLEVEL9K_VCS_BRANCH_ICON='\UE0A0 '
+typeset -g POWERLEVEL9K_VCS_BRANCH_ICON=
 
 # Untracked files icon. It's really a question mark, your font isn't broken.
 # Change the value of this parameter to show a different icon.
