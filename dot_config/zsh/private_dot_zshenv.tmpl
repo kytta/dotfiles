@@ -77,6 +77,12 @@ if [ -n "${ZSH_VERSION-}" ]; then
     $manpath
   )
 
+  # More env setups
+  if (( $+commands[pnpm] )); then
+    export PNPM_HOME="$XDG_DATA_HOME/pnpm"
+    path=( "$PNPM_HOME" $path )
+  fi
+
   : ${ZDOTDIR:=~/.config/zsh}
   setopt no_global_rcs
   [[ -o no_interactive && -z "${Z4H_BOOTSTRAPPING-}" ]] && return
