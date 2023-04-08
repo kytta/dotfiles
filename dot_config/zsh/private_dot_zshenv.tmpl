@@ -1,3 +1,5 @@
+#!/bin/zsh
+# chezmoi:template:left-delimiter="# [[" right-delimiter=]]
 # Documentation: https://github.com/romkatv/zsh4humans/blob/v5/README.md.
 #
 # Do not modify this file unless you know exactly what you are doing.
@@ -33,6 +35,10 @@ if [ -n "${ZSH_VERSION-}" ]; then
   export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
   export CARGO_HOME="$XDG_DATA_HOME"/cargo
   # Do not change anything else in this file.
+  
+  # [[ if stat (joinPath .homebrew.prefix "bin" "brew") ]]
+  eval "$(# [[ joinPath .homebrew.prefix "bin" "brew" ]] shellenv)"
+  # [[ end ]]
 
   : ${ZDOTDIR:=~/.config/zsh}
   setopt no_global_rcs
