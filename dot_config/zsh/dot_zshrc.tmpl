@@ -67,15 +67,17 @@ export PAGER='less'
 export LESS='--ignore-case --LONG-PROMPT --RAW-CONTROL-CHARS --chop-long-lines --hilite-unread --tabs=4'
 READNULLCMD=$PAGER  # use "<" to read files
 
-if [[ "$OSTYPE" == darwin* ]]; then
-  export BROWSER=open
-elif [[ "$OSTYPE" == cygwin* ]]; then
-  export BROWSER=cygstart
-elif [[ "$OSTYPE" == linux-android ]]; then
-  export BROWSER=termux-open
-else
-  export BROWSER=xdg-open
-fi
+# Browser
+# [[ if eq .chezmoi.os "darwin" -]]
+export BROWSER=open
+# [[ else if eq .chezmoi.os "windows" -]]
+export BROWSER=cygstart
+# [[ else if eq .chezmoi.os "android" -]]
+export BROWSER=termux-open
+# [[ else if eq .chezmoi.os "linux" -]]
+export BROWSER=xdg-open
+# [[ end ]]
+alias o="$BROWSER"
 
 (( $+commands[zoxide] )) \
   && eval "$(zoxide init zsh)"
@@ -270,7 +272,6 @@ alias zmv='zmv -Mv'
 alias zcp='zmv -Cv'
 alias zln='zmv -Lv'
 
-alias o="$BROWSER"
 if [[ "$OSTYPE" == cygwin* ]]; then
   alias pbcopy='tee > /dev/clipboard'
   alias pbpaste='cat /dev/clipboard'
