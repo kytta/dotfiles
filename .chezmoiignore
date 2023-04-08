@@ -8,6 +8,10 @@ private_Library/
 dot_config/private_karabiner/
 {{ end }}
 
+{{ if ne .chezmoi.os "linux" }}
+dot_config/hatch/
+{{ end }}
+
 {{ if ne .machine.type "personal" }}
 dot_config/beets/
 dot_config/rclone/
