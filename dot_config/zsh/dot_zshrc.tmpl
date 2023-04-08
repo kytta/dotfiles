@@ -85,14 +85,6 @@ alias o="$BROWSER"
 export ANDROID_HOME="$XDG_DATA_HOME/android" \
   && path+=( "$ANDROID_HOME/platform-tools" )
 
-(( $+commands[pyenv] )) \
-  && export PYENV_ROOT="$XDG_DATA_HOME"/pyenv \
-  && eval "$(pyenv init - zsh)"
-
-(( $+commands[nodenv] )) \
-  && export NODENV_ROOT="$XDG_DATA_HOME"/nodenv \
-  && eval "$(nodenv init - zsh)"
-
 (( $+commands[hatch] )) \
   && export HATCH_CONFIG="$XDG_CONFIG_HOME/hatch/config.toml"
 

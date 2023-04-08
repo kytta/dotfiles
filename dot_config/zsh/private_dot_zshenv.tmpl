@@ -52,7 +52,6 @@ if [ -n "${ZSH_VERSION-}" ]; then
   eval "$(# [[ joinPath .homebrew.prefix "bin" "brew" ]] shellenv)"
 
   path=(
-    "$HOMEBREW_PREFIX/opt/node@18/bin"
     "$HOMEBREW_PREFIX/opt/curl/bin"
     "$HOMEBREW_PREFIX/opt/gnu-getopt/bin"
     "$HOMEBREW_PREFIX/opt/ncurses/bin"
@@ -76,6 +75,17 @@ if [ -n "${ZSH_VERSION-}" ]; then
     "$HOME/.local/share/man"
     $manpath
   )
+
+  # Shims (nodenv, pyenv, etc.)
+  if (( $+commands[pyenv] )); then
+    export PYENV_ROOT="$XDG_DATA_HOME"/pyenv
+    eval "$(pyenv init - zsh)"
+  fi
+
+  if (( $+commands[nodenv] )); then
+    export NODENV_ROOT="$XDG_DATA_HOME"/nodenv
+    eval "$(nodenv init - zsh)"
+  fi
 
   # More env setups
   if (( $+commands[pnpm] )); then
