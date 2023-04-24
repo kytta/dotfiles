@@ -86,7 +86,8 @@ export ANDROID_HOME="$XDG_DATA_HOME/android" \
   && path+=( "$ANDROID_HOME/platform-tools" )
 
 (( $+commands[hatch] )) \
-  && export HATCH_CONFIG="$XDG_CONFIG_HOME/hatch/config.toml"
+  && export HATCH_CONFIG="$XDG_CONFIG_HOME/hatch/config.toml" \
+  && export HATCH_PYTHON="$HOMEBREW_PREFIX/bin/python3"
 
 (( $+commands[gcloud] )) \
   && source "$HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
