@@ -36,5 +36,5 @@ Uses code from:
 
 ---
 
-This project is hosted on GitHub:
-<https://github.com/kytta/dotfiles>
+This project is hosted on Codeberg:
+<https://codeberg.org/kytta/dotfiles>
