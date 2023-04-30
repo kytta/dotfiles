@@ -13,7 +13,7 @@ Collection of configuration files.
 2. Load the dotfiles.
 
    ```sh
-   chezmoi init kytta
+   chezmoi init codeberg.org/kytta/dotfiles
    ```
 
 3. Diff (optional) and apply.
