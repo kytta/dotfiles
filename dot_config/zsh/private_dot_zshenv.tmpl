@@ -55,7 +55,7 @@ if [ -n "${ZSH_VERSION-}" ]; then
     "$HOMEBREW_PREFIX/opt/curl/bin"
     "$HOMEBREW_PREFIX/opt/gnu-getopt/bin"
     "$HOMEBREW_PREFIX/opt/ncurses/bin"
-    "/opt/homebrew/opt/java/bin"
+    "$HOMEBREW_PREFIX/opt/java/bin"
 
     $path
   )
@@ -64,8 +64,6 @@ if [ -n "${ZSH_VERSION-}" ]; then
     "$HOMEBREW_PREFIX/share/zsh/site-functions"
     $fpath
   )
-
-  export JAVA_HOME="$HOMEBREW_PREFIX/opt/java/libexec/openjdk.jdk/Contents/Home"
 
   # [[ end ]]
 
