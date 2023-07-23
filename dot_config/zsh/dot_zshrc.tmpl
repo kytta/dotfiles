@@ -281,6 +281,7 @@ fi
 
 [[ "$TERM" == "xterm-kitty" ]] && alias ssh='kitty +kitten ssh'
 
+alias serve="$(pyenv which python3) -m http.server --bind 127.0.0.1 --protocol HTTP/1.1"
 
 
 # Add flags to existing aliases.
