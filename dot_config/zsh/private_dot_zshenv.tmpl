@@ -36,7 +36,7 @@ if [ -n "${ZSH_VERSION-}" ]; then
   export CARGO_HOME="$XDG_DATA_HOME"/cargo
 
   # [[ if eq .chezmoi.os "darwin" -]]
-  path+=("/Library/Apple/usr/bin" "/opt/X11/bin")
+  path=("/usr/local/bin" $path "/Library/Apple/usr/bin" "/opt/X11/bin")
   # [[ end ]]
 
   # Homebrew
