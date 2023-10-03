@@ -5,6 +5,7 @@
 [core]
 	editor = micro -softwrap true -wordwrap true -colorcolumn 72
 	excludesFile = ~/.config/git/ignore
+	compression = 9
 [merge]
 	tool = vscode
 [mergetool "vscode"]
