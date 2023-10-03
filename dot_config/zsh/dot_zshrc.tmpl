@@ -285,14 +285,14 @@ alias serve="$(pyenv which python3) -m http.server --bind 127.0.0.1 --protocol H
 
 
 # Add flags to existing aliases.
-if (( $+commands[exa] )); then
-  alias ls='exa'
+if (( $+commands[eza] )); then
+  alias ls='eza'
 
-  alias l='exa --oneline --all'         # one column, + hidden files.
-  alias ll='exa --long --header'        # long format
-  alias la='exa --long --header --all'  # long format, + hidden files.
+  alias l='eza --oneline --all'         # one column, + hidden files.
+  alias ll='eza --long --header'        # long format
+  alias la='eza --long --header --all'  # long format, + hidden files.
 
-  alias tree='exa --tree --all --ignore-glob .git'
+  alias tree='eza --tree --all --ignore-glob .git'
 fi
 
 
