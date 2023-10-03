@@ -2,46 +2,53 @@
 	email = me@kytta.dev
 	name = Nikita Karamov
 	signingkey = AF6C280C2A34D3F39BED9366D397E9BE9E6898FA
+
 [core]
 	editor = micro -softwrap true -wordwrap true -colorcolumn 72
 	excludesFile = ~/.config/git/ignore
 	compression = 9
-[merge]
-	tool = vscode
-[mergetool "vscode"]
-	cmd = code --wait $MERGED
+[init]
+	defaultBranch = main
+	templateDir = /Users/nikita/.config/git/templateDir
+
+[fetch]
+	prune = true
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
+
+[commit]
+	gpgSign = true
+[tag]
+	forceSignAnnotated = true
+
 [diff]
 	tool = difftastic
 [difftool "vscode"]
 	cmd = code --wait --diff $LOCAL $REMOTE
 [difftool "difftastic"]
 	cmd = difft $LOCAL $REMOTE
-[gpg]
-	format = openpgp
-[gpg "ssh"]
-	allowedSignersFile = ~/.ssh/allowed_signers
-[color]
-	ui = true
-[commit]
-	gpgSign = true
-[tag]
-	forceSignAnnotated = true
-[pull]
-	rebase = true
-[rebase]
-	autoStash = true
-[init]
-	defaultBranch = main
-	templateDir = /Users/nikita/.config/git/templateDir
+
+[merge]
+	tool = vscode
+[mergetool "vscode"]
+	cmd = code --wait $MERGED
+
 [sendemail]
 	smtpserver = smtp.mailbox.org
 	smtpuser = nikita@mailbox.org
 	smtpencryption = ssl
 	smtpserverport = 465
+
 [alias]
 	pushall = !git push origin -4 --all --follow-tags && git remote | grep -vF 'origin' | xargs -n1 -P 0 git push -4 --all --follow-tags --no-verify
 	fetchall = !git remote | xargs -L1 -P 0 git fetch
+
+[color]
+	ui = true
 [help]
 	autocorrect = prompt
+
 [github]
 	user = kytta
